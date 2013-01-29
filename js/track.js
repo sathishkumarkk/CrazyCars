@@ -110,7 +110,7 @@ CarLocation=function(options){
             block=options.cars[i].block-1;//Since We are referring to an array and count starts from 0
             var cx=path.grid[block].x+Math.round(Math.random()*80);
             var cy=10+path.grid[block].y+Math.round(Math.random()*80);
-            elementArray.push(Paper.rect(cx,cy,10,10).attr({'fill':options.cars[i].color}));
+            elementArray.push(Paper.image(options.cars[i].src, cx,cy,60,30));
 
 
         }
