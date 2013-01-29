@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    
+    //try using require js in order to remove this kind of path directive or make some code that can generate the same.
     var path={
     grid:[
     //1st Row
@@ -58,41 +60,7 @@ $(document).ready(function(){
     {'x':800,'y':480},
     {'x':900,'y':480}]
 };
-/*
-{
-'cars': [{
-        'block':5,
-        'exist':true,
-        'color':'yellow'
-    },
-    {
-        'block':5,
-        'exist':true,
-        'color':'green'
-    },
-    {
-        'block':5,
-        'exist':true,
-        'color':'orange'
-    },
-    {
-        'block':5,
-        'exist':true,
-        'color':'white'
-    },
-    {
-        'block':5,
-        'exist':true,
-        'color':'grey'
-    },
-    {
-        'block':5,
-        'exist':true,
-        'color':'pink'
-    }]
 
-}
-*/
 
     
 var Paper = new Raphael('canvas',1000,760);
@@ -117,6 +85,8 @@ CarLocation=function(options){
     };
 
 }
+
+
 
 //RoadPatch Class that handles most of the functions as well as the Object specific code
 var RoadPatch=function(){};
@@ -165,17 +135,103 @@ var roadBuilder=function(RoadPatch,Paper,grid){
                     };
 //Initialization of the Road
 var init=function(RoadPatch,Paper,grid){
-    roadBuilder(RoadPatch,Paper,grid);
-    stripBuilder(RoadPatch,Paper,grid);
-    upperStrip(RoadPatch,Paper,grid);
-    lowerStrip(RoadPatch,Paper,grid);
+                roadBuilder(RoadPatch,Paper,grid);
+                stripBuilder(RoadPatch,Paper,grid);
+                upperStrip(RoadPatch,Paper,grid);
+                lowerStrip(RoadPatch,Paper,grid);
 }
 
 
 
-    for(var i=0;i<path.grid.length;i++)
-    {
-    var a = new RoadPatch();
-    init(a,Paper,path.grid[i]);
-    }
+
+
+//Bootstrap the game using this set of code
+    
+    
+    
+    
+    
+    /*API Preperation using the Factory Pattern and Modularization
+      In this approach we have one Global Variable called UB alias
+      The Urban Traveller and most of the thigs would be handled
+      by this global variable. I have to modularize the code for 
+      the UI.
+    */
+    UB={
+        //To initialise or Bootstrap the Game.
+        init:function(){
+            for(var i=0;i<path.grid.length;i++)
+            {
+                var a = new RoadPatch();
+                init(a,Paper,path.grid[i]);
+            }
+            
+                        },
+        
+        /*
+        This is used in order to call the signal object on certain block.
+        The signal state should be maintained by usage of a queue and should be updated
+        */
+        setSignal:function(){},
+        
+        /*This is used in order to unset the signal of a specific space and should be called when its required to be updated*/
+        unsetSignal:function(){},
+        
+        /*This would return a boolean value stating whether a specific signal is updated in a certain area*/
+        signalCheck:function(){},
+        
+        /*
+        This would be there as an observer in order to maintain the fresh score from all the respective units.
+        This would serve to update the score of a specific user whereas all the other scores would be taken care
+        of from the front end.
+        */
+        refreshScore:function(){},
+        
+        /*Get the location of a specific player. This would enable us to get value of any specific player at any point of time*/
+        getLocation:function(){},
+        
+        /*
+        This would return all the possible values with respect to the board. Coule be consumed with AJAX or websocket 
+        ... not sure about websocket but surely by AJAX. This would return all the realtime values.    
+        */
+        getAllData:function(){}
+    };
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 });
