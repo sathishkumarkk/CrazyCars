@@ -172,13 +172,13 @@ var init=function(RoadPatch,Paper,grid){
         This is used in order to call the signal object on certain block.
         The signal state should be maintained by usage of a queue and should be updated
         */
-        setSignal:function(){},
+        setSignal:function(signalId,signalType){},
         
         /*This is used in order to unset the signal of a specific space and should be called when its required to be updated*/
         unsetSignal:function(){},
         
         /*This would return a boolean value stating whether a specific signal is updated in a certain area*/
-        signalCheck:function(){},
+        getSignal:function(){},
         
         /*
         This would be there as an observer in order to maintain the fresh score from all the respective units.
