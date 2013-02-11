@@ -123,8 +123,10 @@ $(document).ready(function(){
 };
 
 
+/*Actual Code Starts here. The above can be referenced by just using an Ajax Request*/
+
     
-var Paper = new Raphael('canvas',1000,760);
+var Paper = new Raphael('canvas',500,600);
 
 var elementArray=[];
 
@@ -137,9 +139,9 @@ CarLocation=function(options){
         if(options.cars[i].exist)
         {
             block=options.cars[i].block-1;//Since We are referring to an array and count starts from 0
-            var cx=path.grid[block].x+Math.round(Math.random()*80);
-            var cy=10+path.grid[block].y+Math.round(Math.random()*80);
-            elementArray.push(Paper.image(options.cars[i].src, cx,cy,60,30));
+            var cx=path.grid[block].x+Math.round(Math.random()*30);
+            var cy=path.grid[block].y+Math.round(Math.random()*40);
+            elementArray.push(Paper.image(options.cars[i].src, cx,cy,20,20));
 
 
         }
