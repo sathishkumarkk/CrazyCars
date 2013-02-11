@@ -142,6 +142,7 @@ CarLocation=function(options){
             var cx=path.grid[block].x+Math.round(Math.random()*30);
             var cy=path.grid[block].y+Math.round(Math.random()*40);
             elementArray.push(Paper.image(options.cars[i].src, cx,cy,20,20));
+            elementArray[0].transform("r180");
 
 
         }
