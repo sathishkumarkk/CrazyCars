@@ -205,7 +205,20 @@ var init=function(RoadPatch,Paper,grid){
                 lowerStrip(RoadPatch,Paper,grid);
 }
 
-
+//Setting of Signal deals with just drawing a spot at the lane where the signal is called for.The signal may be an array of places
+var setSignal=function(signalId,signalType){
+                var barrier=[];
+                //In order to get the location of the signal which ranges from 0-99
+                
+                for(var i=0;i<signalId.record.length;i++)
+                {
+                     var tempPath=path.grid[signalId.record[i].id];
+                     barrier.push(Paper.circle(tempPath.x+10,tempPath.y+10,5).attr({'fill':'red'}));
+                }
+               //REturns a Array that can be used to add or delete the barriers
+                return barrier;
+                
+}
 
 
 
@@ -236,7 +249,9 @@ var init=function(RoadPatch,Paper,grid){
         This is used in order to call the signal object on certain block.
         The signal state should be maintained by usage of a queue and should be updated
         */
-        setSignal:function(signalId,signalType){},
+        setSignal:function(signalId,signalType){
+            setSignal(signalId,signalType);
+        },
         
         /*This is used in order to unset the signal of a specific space and should be called when its required to be updated*/
         unsetSignal:function(){},
