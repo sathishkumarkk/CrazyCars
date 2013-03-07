@@ -141,15 +141,19 @@ CarLocation=function(options){
             block=options.cars[i].block-1;//Since We are referring to an array and count starts from 0
             var cx=path.grid[block].x+Math.round(Math.random()*30);
             var cy=path.grid[block].y+Math.round(Math.random()*40);
+<<<<<<< HEAD
             elementArray.push(Paper.image(options.cars[i].src, cx,cy,20,20));
             elementArray[0].transform("");
+=======
+            elementArray.push(Paper.image(options.cars[i].src, cx,cy,40,40));
+            //elementArray[0].transform("r180");
+>>>>>>> a4475fe98cd50d1644544c0cfb3f86228f5db82a
 
 
         }
     };
 
 }
-
 
 
 //RoadPatch Class that handles most of the functions as well as the Object specific code

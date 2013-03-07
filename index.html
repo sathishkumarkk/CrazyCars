@@ -5,16 +5,24 @@
 <div id="canvas">
 </div>
 <div class="number" style="float:left">
+		<div id="content">
+		<br>
+	<button id="newG">New Game</button><br><br>
+	<img id="logo" src="img/UrbenTravellers200.png"/><br><br>
+	<img id="dice" src="img/magic_dice.png" alt="Dice"/><br>
+	
+	</div>
 	<p>car1:<input type="text" id="car1"/></p>
 	<p>car2:<input type="text" id="car2"/></p>
 	<p>car3:<input type="text" id="car3"/></p>
 	<p>car4:<input type="text" id="car4"/></p>
 	<p>car5:<input type="text" id="car5"/></p>
-	<p style="color:red">Please dont put any value greater than 50</p>
+	<p style="color:red">Please dont put any value greater than 100</p>
 	<p><input type="submit" id="submit"/></p>
 </div>
 <script>
 $(document).ready(function(){
+
     var signal={
         'record':[
             {'id':'20'},
@@ -30,6 +38,13 @@ $(document).ready(function(){
 		var c3=Number($('#car3').val());
 		var c4=Number($('#car4').val());
 		var c5=Number($('#car5').val());
+
+	var c1=Number($('#car1').val());
+	var c2=Number($('#car2').val());
+	var c3=Number($('#car3').val());
+	var c4=Number($('#car4').val());
+	var c5=Number($('#car5').val());
+
 		a={
 					'cars': [{
 					        'block':c1,
@@ -63,7 +78,16 @@ $(document).ready(function(){
 					    }]
 
 			};
+
             var barrierU=B.init(signal);
+
+	$('#newG').click(function(){
+		CarLocation(0);
+	});
+
+	$('#submit').click(function(){
+            UB.init();
+
 			CarLocation(a);
 	});
 	
