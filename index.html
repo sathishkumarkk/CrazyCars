@@ -15,6 +15,15 @@
 </div>
 <script>
 $(document).ready(function(){
+    var signal={
+        'record':[
+            {'id':'20'},
+            {'id':34},
+            {'id':45},
+            {'id':66}
+                ]
+            };
+            
 	$('#submit').click(function(){
 		var c1=Number($('#car1').val());
 		var c2=Number($('#car2').val());
@@ -54,7 +63,7 @@ $(document).ready(function(){
 					    }]
 
 			};
-            UB.init();
+            var barrierU=B.init(signal);
 			CarLocation(a);
 	});
 	

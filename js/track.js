@@ -142,7 +142,7 @@ CarLocation=function(options){
             var cx=path.grid[block].x+Math.round(Math.random()*30);
             var cy=path.grid[block].y+Math.round(Math.random()*40);
             elementArray.push(Paper.image(options.cars[i].src, cx,cy,20,20));
-            elementArray[0].transform("r180");
+            elementArray[0].transform("");
 
 
         }
@@ -203,22 +203,10 @@ var init=function(RoadPatch,Paper,grid){
                 stripBuilder(RoadPatch,Paper,grid);
                 upperStrip(RoadPatch,Paper,grid);
                 lowerStrip(RoadPatch,Paper,grid);
+                
 }
 
 //Setting of Signal deals with just drawing a spot at the lane where the signal is called for.The signal may be an array of places
-var setSignal=function(signalId,signalType){
-                var barrier=[];
-                //In order to get the location of the signal which ranges from 0-99
-                
-                for(var i=0;i<signalId.record.length;i++)
-                {
-                     var tempPath=path.grid[signalId.record[i].id];
-                     barrier.push(Paper.circle(tempPath.x+10,tempPath.y+10,5).attr({'fill':'red'}));
-                }
-               //REturns a Array that can be used to add or delete the barriers
-                return barrier;
-                
-}
 
 
 
@@ -236,21 +224,31 @@ var setSignal=function(signalId,signalType){
     */
     UB={
         //To initialise or Bootstrap the Game.
-        init:function(){
+        init:function(signalId){
             for(var i=0;i<path.grid.length;i++)
             {
                 var a = new RoadPatch();
                 init(a,Paper,path.grid[i]);
             }
+             var barrier=[];
+                //In order to get the location of the signal which ranges from 0-99
+                
+                for(var i=0;i<signalId.record.length;i++)
+                {
+                     var tempPath=path.grid[signalId.record[i].id];
+                     barrier.push(Paper.circle(tempPath.x+10,tempPath.y+10,5).attr({'fill':'red'}));
+                }
+               //Returns a Array that can be used to add or delete the barriers
+                return barrier;    
             
-                        },
+                },
         
         /*
         This is used in order to call the signal object on certain block.
         The signal state should be maintained by usage of a queue and should be updated
         */
         setSignal:function(signalId,signalType){
-            setSignal(signalId,signalType);
+            setSignal(signalId);
         },
         
         /*This is used in order to unset the signal of a specific space and should be called when its required to be updated*/
@@ -267,7 +265,11 @@ var setSignal=function(signalId,signalType){
         refreshScore:function(){},
         
         /*Get the location of a specific player. This would enable us to get value of any specific player at any point of time*/
-        getLocation:function(){},
+        getLocation:function(){
+            /*This can be done by using the initial JSON for setting the cars to zero position and then
+              bringing them in order to get or change the count
+            */
+        },
         
         /*
         This would return all the possible values with respect to the board. Coule be consumed with AJAX or websocket 
