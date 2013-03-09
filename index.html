@@ -25,19 +25,20 @@ $(document).ready(function(){
 
     var signal={
         'record':[
-            {'id':'20'},
+            {'id':15},
             {'id':34},
-            {'id':45},
-            {'id':66}
-                ]
+            {'id':75},
+            {'id':66}]
+            };
+    var booster={
+        'record':[
+            {'id':25},
+            {'id':48},
+            {'id':80},
+            {'id':90}]
             };
             
 	$('#submit').click(function(){
-		var c1=Number($('#car1').val());
-		var c2=Number($('#car2').val());
-		var c3=Number($('#car3').val());
-		var c4=Number($('#car4').val());
-		var c5=Number($('#car5').val());
 
 	var c1=Number($('#car1').val());
 	var c2=Number($('#car2').val());
@@ -78,18 +79,17 @@ $(document).ready(function(){
 					    }]
 
 			};
-
-            var barrierU=B.init(signal);
-
+			//UB.init();
+            UB.init(signal,booster);
+			CarLocation(a);
+	});
 	$('#newG').click(function(){
 		CarLocation(0);
 	});
 
 	$('#submit').click(function(){
-            UB.init();
-
-			CarLocation(a);
-	});
-	
+   
+	});	
 });
+
 </script>

@@ -141,13 +141,15 @@ CarLocation=function(options){
             block=options.cars[i].block-1;//Since We are referring to an array and count starts from 0
             var cx=path.grid[block].x+Math.round(Math.random()*30);
             var cy=path.grid[block].y+Math.round(Math.random()*40);
-<<<<<<< HEAD
-            elementArray.push(Paper.image(options.cars[i].src, cx,cy,20,20));
-            elementArray[0].transform("");
-=======
+//<<<<<<< HEAD
+            //elementArray.push(Paper.image(options.cars[i].src, cx,cy,20,20));
+            //elementArray[0].transform("");
+//=======
+
             elementArray.push(Paper.image(options.cars[i].src, cx,cy,40,40));
+            elementArray.push(Paper.image("img/start.jpeg",0,545,55,55));
             //elementArray[0].transform("r180");
->>>>>>> a4475fe98cd50d1644544c0cfb3f86228f5db82a
+//>>>>>>> a4475fe98cd50d1644544c0cfb3f86228f5db82a
 
 
         }
@@ -228,7 +230,7 @@ var init=function(RoadPatch,Paper,grid){
     */
     UB={
         //To initialise or Bootstrap the Game.
-        init:function(signalId){
+        init:function(signalId,bannerId){
             for(var i=0;i<path.grid.length;i++)
             {
                 var a = new RoadPatch();
@@ -240,7 +242,12 @@ var init=function(RoadPatch,Paper,grid){
                 for(var i=0;i<signalId.record.length;i++)
                 {
                      var tempPath=path.grid[signalId.record[i].id];
-                     barrier.push(Paper.circle(tempPath.x+10,tempPath.y+10,5).attr({'fill':'red'}));
+                     barrier.push(Paper.rect(tempPath.x,tempPath.y,50,55).attr({'fill':'red'}));
+                }
+                for(var i=0;i<bannerId.record.length;i++)
+                {
+                     var tempPath=path.grid[bannerId.record[i].id];
+                     barrier.push(Paper.rect(tempPath.x,tempPath.y,50,55).attr({'fill':'yellow'}));
                 }
                //Returns a Array that can be used to add or delete the barriers
                 return barrier;    
